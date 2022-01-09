@@ -7,12 +7,14 @@ function AddNote() {
     const [note, setNote] = useState({title: '',description: '',tag: "default"})
 
     const handleClick = (e) => {
+        //prevent page reload
         e.preventDefault();
         addNote(note.title,note.description,note.tag);
 
     }
 
     const onChange = (e) => {
+        //... spread syntax
         setNote({...note,[e.target.name]:e.target.value})
 
     }
@@ -33,7 +35,7 @@ function AddNote() {
                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                 <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
             </div>
-            <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+            <button type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
         </form>
         </div>
     )
