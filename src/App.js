@@ -8,6 +8,7 @@ function App() {
    <>
    <NoteState>
    <Navbar/>
+   <Alert/>
    <div className="container">
    <Home/>
    </div>
