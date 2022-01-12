@@ -1,7 +1,7 @@
 import React from "react";
 import Notes from "./Notes";
 
-export default function Home(props) {
+ function Home(props) {
   const {showAlert} = props
   return (
     <div>
@@ -10,3 +10,5 @@ export default function Home(props) {
     </div>
   );
 }
+
+export default Home

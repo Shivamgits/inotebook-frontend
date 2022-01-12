@@ -1,11 +1,11 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom'
+import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Signup(props) {
     const [credentials,setCredentials] = useState({name:"",email: "",password: "",cpassword:""})
-    let history = useHistory();
+    let  navigate = useNavigate();
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async (e)=>{
         e.preventDefault();
         const {name,email,password} = credentials;
         const response = await fetch("http://localhost:5000/api/auth/createuser", {
@@ -21,7 +21,7 @@ function Signup(props) {
               if(json.success){
 
                   localStorage.setItem('token',json.authtoken);
-                  history.push("/")
+                  navigate("/")
                   props.showAlert("Account Created Successfully","success");
               }
               else{
@@ -36,10 +36,11 @@ function Signup(props) {
 
     }
     return (
-        <div className="container">
+        <div className="container mt-2">
+            <h2 className="my-2">Create an Account to use iNotebook</h2>
             <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="name" className="form-label">Email address</label>
+                <div className="my-3">
+                    <label htmlFor="name" className="form-label">Name</label>
                     <input type="text" className="form-control" id="name" name="name" onChange={onChange} aria-describedby="emailHelp" />
 
                 </div>
