@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 function Login(props) {
     const [credentials,setCredentials] = useState({email: "",password: ""})
@@ -13,12 +13,12 @@ function Login(props) {
             },
             body: JSON.stringify({ email:credentials.email,password: credentials.password })
           });
-          const json = response.json();
+          const json = await response.json();
           console.log(json);
 
           if(json.success){
               //save the auth token and redirect 
-              localStorage.setItem('token',json.authtoken);
+              localStorage.setItem('auth-token',json.authToken);
               props.showAlert("Login Successfully","success");
              navigate("/")
 

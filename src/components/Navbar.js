@@ -4,7 +4,7 @@ import {Link, useNavigate } from 'react-router-dom';
  function Navbar() {
   let  navigate = useNavigate();
   const handleLogout = ()=>{
-    localStorage.removeItem('token')
+    localStorage.removeItem('auth-token')
    navigate("/login")
   }
 
@@ -23,7 +23,7 @@ import {Link, useNavigate } from 'react-router-dom';
           </li>
       </ul>
       {
-      !localStorage.getItem('token')?<form className="d-flex">
+      !localStorage.getItem('auth-token')?<form className="d-flex">
       <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
       <Link className="btn btn-primary mx-1" to="/signUp"  role="button">SignUp</Link>
       </form>:<button onClick={handleLogout} className="btn btn-primary mx-1">Logout</button>}
